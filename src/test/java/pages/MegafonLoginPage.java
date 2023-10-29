@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -22,6 +23,11 @@ public class MegafonLoginPage {
 
     public MegafonLoginPage checkErrorFormFormat() {
         errorFormFormat.should(exist);
+        return this;
+    }
+
+    public MegafonLoginPage checkIncorrectValues(String value) {
+        phoneNumberField.shouldNotHave(Condition.value(value));
         return this;
     }
 
